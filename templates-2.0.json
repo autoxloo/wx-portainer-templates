@@ -36,13 +36,6 @@
           "label": "Domain name",
           "description": "Domain for access to container. Use any  unsed subdomain of *.wxwx.wxloo.com, e.g: instx.wxwa.wxloo.com"
         }
-      ,
-        {
-          "name": "WEBHOOK",
-          "label": "Webhook url",
-          "description": "Url fo setup webhook if it is known ('https://wxwa.wxloo.com' if empty)",
-          "default": "https://wxwa.wxloo.com"
-        }
       ]
     }
   ]
