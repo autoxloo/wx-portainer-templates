@@ -12,7 +12,7 @@ services:
       - masterKey=w2apiisthebestlibrary
       - port=443
       - token=${TOKEN}
-      - webhook=${WEBHOOK}
+      - webhook=https://webhook.mydomain.com
       - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       - NODE_VERSION=16.9.0
       - YARN_VERSION=1.22.5

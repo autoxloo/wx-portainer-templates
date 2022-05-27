@@ -17,24 +17,17 @@
         {
           "name": "INSTANCE",
           "label": "Api instance number",
-          "description": "Must be unique Instance number that is using for pai conaction https://instx.wxwa.wxloo.com/<instance> (e.g 01235)"
+          "description": "Must be unique Instance number that is using for pai conaction https://DOMAIN/<instance> (e.g 01235)"
         },
         {
           "name": "TOKEN",
           "label": "Api token",
-          "description": "Api token random string of  letters and  numbers, no spaces, no special chars ('j19ksidfxxcksm12213' if empty)",
-          "default": "j19ksidfxxcksm12213"
-        },
-        {
-          "name": "WEBHOOK",
-          "label": "Webhook url",
-          "description": "Url fo setup webhook if it is known ('https://wxwa.wxloo.com' if empty)",
-          "default": "https://wxwa.wxloo.com"
+          "description": "Api token random string of  letters and  numbers, no spaces, no special chars "
         },
         {
           "name": "DOMAIN",
           "label": "Domain name",
-          "description": "Domain for access to container. Use any  unsed subdomain of *.wxwx.wxloo.com, e.g: instx.wxwa.wxloo.com"
+          "description": "Domain for access to container."
         }
       ]
     }
