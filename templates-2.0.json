@@ -2,7 +2,7 @@
   "version": "2",
   "templates": [
     {
-      "type": 1,
+      "type": 3,
       "title": "WXWA",
       "description": "WXWA setup as a compose file",
       "categories": ["webservice"],
