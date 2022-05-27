@@ -4,7 +4,6 @@ services:
       - bash
       - -c
       - replace-env configs/config-release &&node production.js
-    container_name: ${CONTAINERNAME}
     domainname: ${DOMAIN}
     entrypoint:
       - docker-entrypoint.sh
@@ -25,11 +24,11 @@ services:
     labels:
       traefik.docker.network: proxy
       traefik.enable: true
-      traefik.http.routers.${CONTAINERNAME}-secure.entrypoints: websecure
-      traefik.http.routers.${CONTAINERNAME}-secure.rule: Host(`${DOMAIN}`)
-      traefik.http.routers.${CONTAINERNAME}-secure.service: ${CONTAINERNAME}
-      traefik.http.routers.${CONTAINERNAME}.tls: true
-      traefik.http.services.${CONTAINERNAME}.loadbalancer.server.port: 8000
+      traefik.http.routers.${CONTAINER_NAME}-secure.entrypoints: websecure
+      traefik.http.routers.${CONTAINER_NAME}-secure.rule: Host(`${DOMAIN}`)
+      traefik.http.routers.${CONTAINER_NAME}-secure.service: ${CONTAINER_NAME}
+      traefik.http.routers.${CONTAINER_NAME}.tls: true
+      traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port: 8000
     logging:
       driver: json-file
       options: {}

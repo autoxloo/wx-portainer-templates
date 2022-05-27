@@ -7,18 +7,13 @@
       "description": "WXWA setup as a compose file",
       "categories": ["webservice"],
       "platform": "linux",
+      "network": "proxy",
       "logo": "",
       "repository": {
         "url": "https://github.com/autoxloo/wx-portainer-templates",
         "stackfile": "stacks/wxwa/docker-compose.yml"
       },
       "env": [
-        {
-          "name": "CONTAINERNAME",
-          "label": "Container name",
-          "description": "Container name withut spaces ('instancex' if empty)",
-          "default": "instancex"
-        },
         {
           "name": "INSTANCE",
           "label": "Api instance number",
