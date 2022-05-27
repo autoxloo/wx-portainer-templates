@@ -1,0 +1,47 @@
+version: "3"
+services:
+    command:
+      - bash
+      - -c
+      - replace-env configs/config-release &&node production.js
+    container_name: ${CONTAINERNAME}
+    domainname: ${DOMAIN}
+    entrypoint:
+      - docker-entrypoint.sh
+    environment:
+      - instance=${INSTANCE}
+      - masterKey=w2apiisthebestlibrary
+      - port=443
+      - token=${TOKEN}
+      - webhook=${WEBHOOK}
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - NODE_VERSION=16.9.0
+      - YARN_VERSION=1.22.5
+      - domain=${DOMAIN}
+    expose:
+      - 8000/tcp
+    image: wxwa2api:latest
+    ipc: private
+    labels:
+      traefik.docker.network: proxy
+      traefik.enable: true
+      traefik.http.routers.${CONTAINERNAME}-secure.entrypoints: websecure
+      traefik.http.routers.${CONTAINERNAME}-secure.rule: Host(`${DOMAIN}`)
+      traefik.http.routers.${CONTAINERNAME}-secure.service: ${CONTAINERNAME}
+      traefik.http.routers.${CONTAINERNAME}.tls: true
+      traefik.http.services.${CONTAINERNAME}.loadbalancer.server.port: 8000
+    logging:
+      driver: json-file
+      options: {}
+    networks:
+      - proxy
+    restart: unless-stopped
+    volumes:
+      - /var/lib/docker/volumes/wxwa2api_data/_data/${INSTANCE}/public/cdn:/var/www/w2api/public/cdn
+      - /var/lib/docker/volumes/wxwa2api_data/_data/SESSIONS/whatsSessions:/var/www/w2api/whatsSessions
+      - /var/lib/docker/volumes/wxwa2api_data/_data/SESSIONS:/var/www/w2api/_IGNORE_
+    working_dir: /var/www/w2api
+networks:
+  proxy:
+    external: true
+    name: proxy
