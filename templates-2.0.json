@@ -5,7 +5,7 @@
       "type": 3,
       "title": "WXWA",
       "description": "WXWA setup as a compose file",
-      "categories": ["PaaS"],
+      "categories": ["webservice"],
       "platform": "linux",
       "logo": "",
       "repository": {
