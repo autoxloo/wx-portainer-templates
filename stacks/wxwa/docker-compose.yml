@@ -6,6 +6,7 @@ services:
     - -c
     - replace-env configs/config-release &&node production.js
     domainname: ${DOMAIN}
+    container_name: ${CONTAINER_NAME}
     entrypoint: docker-entrypoint.sh
     environment:
       - instance=${INSTANCE}
@@ -24,11 +25,11 @@ services:
     labels:
       - "traefik.docker.network=proxy"
       - "traefik.enable=true"
-      - "traefik.http.routers.${conatiner_name}-secure.entrypoints=websecure"
-      - "traefik.http.routers.${conatiner_name}-secure.rule=Host(`${DOMAIN}`)"
-      - "traefik.http.routers.${conatiner_name}-secure.service=${conatiner_name}"
-      - "traefik.http.routers.${conatiner_name}.tls=true"
-      - "traefik.http.services.${conatiner_name}.loadbalancer.server.port=8000"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.entrypoints=websecure"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.${CONTAINER_NAME}-secure.service=${CONTAINER_NAME}"
+      - "traefik.http.routers.${CONTAINER_NAME}.tls=true"
+      - "traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port=8000"
     logging:
       driver: json-file
       options: {}
@@ -36,9 +37,9 @@ services:
       - proxy
     restart: unless-stopped
     volumes:
-      - /var/lib/docker/volumes/wxwa2api_data/_data/${TEMPLATE_NAME}/${INSTANCE}/public/cdn:/var/www/w2api/public/cdn
-      - /var/lib/docker/volumes/wxwa2api_data/_data/${TEMPLATE_NAME}/SESSIONS/whatsSessions:/var/www/w2api/whatsSessions
-      - /var/lib/docker/volumes/wxwa2api_data/_data/${TEMPLATE_NAME}/SESSIONS:/var/www/w2api/_IGNORE_
+      - /var/lib/docker/volumes/wxwa2api_data/_data/${INSTANCE}/public/cdn:/var/www/w2api/public/cdn
+      - /var/lib/docker/volumes/wxwa2api_data/_data/SESSIONS/whatsSessions:/var/www/w2api/whatsSessions
+      - /var/lib/docker/volumes/wxwa2api_data/_data/SESSIONS:/var/www/w2api/_IGNORE_
     working_dir: /var/www/w2api
 networks:
   proxy:
