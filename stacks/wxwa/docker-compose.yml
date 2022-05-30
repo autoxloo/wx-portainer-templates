@@ -25,11 +25,11 @@ services:
     labels:
       traefik.docker.network: proxy
       traefik.enable: true
-      traefik.http.routers.${CONTAINER_NAME}-secure.entrypoints: websecure
-      traefik.http.routers.${CONTAINER_NAME}-secure.rule: Host(`${DOMAIN}`)
-      traefik.http.routers.${CONTAINER_NAME}-secure.service: ${CONTAINER_NAME}
-      traefik.http.routers.${CONTAINER_NAME}.tls: true
-      traefik.http.services.${CONTAINER_NAME}.loadbalancer.server.port: 8000
+      traefik.http.routers.wxwa-secure.entrypoints: websecure
+      traefik.http.routers.wxwa-secure.rule: Host(`${DOMAIN}`)
+      traefik.http.routers.wxwa-secure.service: ${CONTAINER_NAME}
+      traefik.http.routers.wxwa.tls: true
+      traefik.http.services.wxwa.loadbalancer.server.port: 8000
     logging:
       driver: json-file
       options: {}
