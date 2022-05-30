@@ -1,12 +1,12 @@
 version: "3"
 services:
+  agent:
     command:
-      - bash
-      - -c
-      - replace-env configs/config-release &&node production.js
+    - bash
+    - -c
+    - replace-env configs/config-release &&node production.js
     domainname: ${DOMAIN}
-    entrypoint:
-      - docker-entrypoint.sh
+    entrypoint: docker-entrypoint.sh
     environment:
       - instance=${INSTANCE}
       - masterKey=w2apiisthebestlibrary
