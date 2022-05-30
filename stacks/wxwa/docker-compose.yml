@@ -1,11 +1,12 @@
 version: "3"
 services:
-  agent:
+  wxwa:
     command:
     - bash
     - -c
     - replace-env configs/config-release &&node production.js
     domainname: ${DOMAIN}
+    container_name: ${CONTAINER_NAME}
     entrypoint: docker-entrypoint.sh
     environment:
       - instance=${INSTANCE}

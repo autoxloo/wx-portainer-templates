@@ -15,6 +15,11 @@
       },
       "env": [
         {
+          "name": "CONTAINER_NAME",
+          "label": "Name of  Container",
+          "description": "Unique Name of container that is using for identification in Portainer"
+        },
+        {
           "name": "INSTANCE",
           "label": "Api instance number",
           "description": "Must be unique Instance number that is using for pai conaction https://DOMAIN/<instance> (e.g 01235)"
