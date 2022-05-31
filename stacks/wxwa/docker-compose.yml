@@ -38,8 +38,9 @@ services:
     restart: unless-stopped
     volumes:
       - /var/lib/docker/volumes/wxwa2api_data/_data/${CONTAINER_NAME}/${INSTANCE}/public/cdn:/var/www/w2api/public/cdn
-      - /var/lib/docker/volumes/wxwa2api_data/_data/${CONTAINER_NAME}/SESSIONS/whatsSessions:/var/www/w2api/whatsSessions
       - /var/lib/docker/volumes/wxwa2api_data/_data/${CONTAINER_NAME}/SESSIONS:/var/www/w2api/_IGNORE_
+      - /var/lib/docker/volumes/wxwa2api_data/_data/${CONTAINER_NAME}/SESSIONS/whatsSessions:/var/www/w2api/whatsSessions
+
     working_dir: /var/www/w2api
 networks:
   proxy:
